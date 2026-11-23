@@ -1,0 +1,158 @@
+{
+  "id": "hs-garbage-feed",
+  "name": "Garbage Day Calendar",
+  "version": "1.0.0",
+  "description": "Shows the next trash, recycling and yard waste pickups from your collection calendar feed.",
+  "author": "stephencaldwell",
+  "license": "MIT",
+  "minAppVersion": "1.15.0",
+  "moduleType": "garbage-feed",
+  "category": "Personal",
+  "icon": "trash-2",
+  "defaultConfig": {
+    "feedUrl": "",
+    "refreshMinutes": 60,
+    "trashPattern": "trash|garbage|refuse|rubbish",
+    "trashLabel": "Trash",
+    "trashColor": "#6ee7b7",
+    "recyclingPattern": "recycl",
+    "recyclingLabel": "Recycling",
+    "recyclingColor": "#93c5fd",
+    "yardPattern": "yard|green|garden|compost|organic|leaf|leaves|brush",
+    "yardLabel": "Yard Waste",
+    "yardColor": "#fbbf24",
+    "title": "Collection Schedule",
+    "showTitle": true,
+    "highlightMode": "day-before"
+  },
+  "defaultSize": {
+    "w": 350,
+    "h": 320
+  },
+  "defaultStyle": {
+    "fontSize": 24,
+    "padding": 16
+  },
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "feedUrl": {
+        "type": "string",
+        "title": "Calendar address",
+        "description": "The web address of your collection calendar (it usually ends in .ics). webcal:// links work too.",
+        "ui:widget": "text",
+        "ui:placeholder": "https://example.com/collection.ics",
+        "ui:group": "Calendar"
+      },
+      "refreshMinutes": {
+        "type": "number",
+        "title": "Check for changes every (minutes)",
+        "minimum": 15,
+        "maximum": 720,
+        "ui:widget": "slider",
+        "ui:step": 15,
+        "ui:group": "Calendar"
+      },
+      "trashPattern": {
+        "type": "string",
+        "title": "Match pattern",
+        "description": "A regular expression tested against each calendar event's title, ignoring case. Leave it empty to hide the trash row.",
+        "ui:widget": "text",
+        "ui:placeholder": "trash|garbage|refuse|rubbish",
+        "ui:group": "Trash"
+      },
+      "trashLabel": {
+        "type": "string",
+        "title": "Name",
+        "ui:widget": "text",
+        "ui:placeholder": "Trash",
+        "ui:group": "Trash"
+      },
+      "trashColor": {
+        "type": "string",
+        "title": "Icon color",
+        "ui:widget": "color",
+        "ui:group": "Trash"
+      },
+      "recyclingPattern": {
+        "type": "string",
+        "title": "Match pattern",
+        "description": "A regular expression tested against each calendar event's title, ignoring case. Leave it empty to hide the recycling row.",
+        "ui:widget": "text",
+        "ui:placeholder": "recycl",
+        "ui:group": "Recycling"
+      },
+      "recyclingLabel": {
+        "type": "string",
+        "title": "Name",
+        "ui:widget": "text",
+        "ui:placeholder": "Recycling",
+        "ui:group": "Recycling"
+      },
+      "recyclingColor": {
+        "type": "string",
+        "title": "Icon color",
+        "ui:widget": "color",
+        "ui:group": "Recycling"
+      },
+      "yardPattern": {
+        "type": "string",
+        "title": "Match pattern",
+        "description": "A regular expression tested against each calendar event's title, ignoring case. Leave it empty to hide the yard waste row.",
+        "ui:widget": "text",
+        "ui:placeholder": "yard|green|garden|compost|organic|leaf|leaves|brush",
+        "ui:group": "Yard Waste"
+      },
+      "yardLabel": {
+        "type": "string",
+        "title": "Name",
+        "ui:widget": "text",
+        "ui:placeholder": "Yard Waste",
+        "ui:group": "Yard Waste"
+      },
+      "yardColor": {
+        "type": "string",
+        "title": "Icon color",
+        "ui:widget": "color",
+        "ui:group": "Yard Waste"
+      },
+      "title": {
+        "type": "string",
+        "title": "Heading",
+        "ui:widget": "text",
+        "ui:placeholder": "Collection Schedule",
+        "ui:group": "Layout"
+      },
+      "showTitle": {
+        "type": "boolean",
+        "title": "Show the heading",
+        "ui:widget": "toggle",
+        "ui:group": "Layout"
+      },
+      "highlightMode": {
+        "type": "string",
+        "title": "Light up a row",
+        "enum": [
+          "day-before",
+          "day-of"
+        ],
+        "enumLabels": [
+          "The day before pickup",
+          "On pickup day"
+        ],
+        "ui:widget": "select",
+        "ui:group": "Layout"
+      }
+    }
+  },
+  "exports": {
+    "component": "default"
+  },
+  "permissions": [
+    "network",
+    "localNetwork"
+  ],
+  "allowedDomains": [
+    "*"
+  ]
+}
